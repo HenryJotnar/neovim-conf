@@ -57,7 +57,9 @@ return {
 		"folke/noice.nvim",
 		event = "VeryLazy",
 		opts = {
-			-- add any options here
+			lsp = {
+				hover = { enabled = false },
+			},
 		},
 		dependencies = {
 			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries

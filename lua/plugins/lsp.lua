@@ -54,6 +54,7 @@ return {
 		--    That is to say, every time a new file is opened that is associated with
 		--    an lsp (for example, opening `main.rs` is associated with `rust_analyzer`) this
 		--    function will be executed to configure the current buffer
+
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
 			callback = function(event)
@@ -103,6 +104,10 @@ return {
 				--  Useful when you're not sure what type a variable is and you want to see
 				--  the definition of its *type*, not where it was *defined*.
 				map("gt", require("telescope.builtin").lsp_type_definitions, "[G]oto [T]ype Definition")
+
+				map("K", function()
+					vim.lsp.buf.hover({ border = "rounded", max_height = 25, max_width = 100 })
+				end, "Documentation")
 
 				-- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
 				---@param client vim.lsp.Client
