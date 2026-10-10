@@ -95,6 +95,13 @@ return { -- Fuzzy Finder (files, lsp, etc)
 			})
 		end, { desc = "[S]earch [/] in Open Files" })
 
+		vim.keymap.set("n", "<leader>sa", function()
+			builtin.live_grep({
+				prompt_title = "Live Grep in All Repo Files",
+				additional_args = { "--no-ignore" },
+			})
+		end, { desc = "[S]earch in [A]ll Repo Files" })
+
 		-- Shortcut for searching your Neovim configuration files
 		vim.keymap.set("n", "<leader>sn", function()
 			builtin.find_files({ cwd = vim.fn.stdpath("config") })
